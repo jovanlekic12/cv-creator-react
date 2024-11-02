@@ -1,0 +1,56 @@
+html {
+  font-size: 62.5%;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+}
+
+body {
+  background-color: #bcbcbc;
+}
+
+header {
+  font-size: 3rem;
+  padding: 1rem 0;
+  text-align: center;
+  color: #bcbcbc;
+  background-color: #000;
+}
+
+.main__container {
+  padding: 8rem 2rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+  border-radius: 2rem;
+  width: 50%;
+  background-color: #fff;
+  margin: 5rem auto;
+  display: flex;
+  flex-direction: column;
+}
+
+article {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+article h1 {
+  font-size: 3.5rem;
+}
+
+.input {
+  font-size: 3rem;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  border: 3px solid #bcbcbc;
+  transition: border 0.3;
+}
+
+.input:focus {
+  border: 5px solid aqua;
+  outline: 0;
+  transition: all 0.3s ease;
+}

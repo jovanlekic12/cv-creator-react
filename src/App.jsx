@@ -1,28 +1,8 @@
 import { useState } from "react";
 import "./App.css";
+import PersonalInfo from "./components/personalInfo";
 
 function App() {
-  const [educations, setEducations] = useState([
-    {
-      universityName: universityName,
-      universityCity: universityCity,
-      degree: degree,
-      subject: subject,
-      universityFromDate: universityFromDate,
-      universtityToDate: universtityToDate,
-    },
-  ]);
-
-  const [experiences, setExperiences] = useState([
-    {
-      position: position,
-      company: company,
-      companyCity: companyCity,
-      companyFromDate: companyFromDate,
-      companyToDate: companyToDate,
-    },
-  ]);
-
   //personal infos
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -47,12 +27,46 @@ function App() {
   const [companyCity, setCompanyCity] = useState("");
   const [companyFromDate, setCompanyFromDate] = useState("");
   const [companyToDate, setCompanyToDate] = useState("");
+
+  const [educations, setEducations] = useState([
+    {
+      universityName: universityName,
+      universityCity: universityCity,
+      degree: degree,
+      subject: subject,
+      universityFromDate: universityFromDate,
+      universtityToDate: universtityToDate,
+    },
+  ]);
+
+  const [personalInfo, setPersonalInfo] = useState({
+    firstName: "",
+    lastName: "",
+    title: "",
+    adress: "",
+    phone: "",
+    email: "",
+    description: "",
+  });
+
+  const [experiences, setExperiences] = useState([
+    {
+      position: position,
+      company: company,
+      companyCity: companyCity,
+      companyFromDate: companyFromDate,
+      companyToDate: companyToDate,
+    },
+  ]);
+
   return (
     <>
       <header className="header">
         <h1>CV CREATOR</h1>
       </header>
-      <main className="main__container"></main>
+      <main className="main__container">
+        <PersonalInfo />
+      </main>
     </>
   );
 }

@@ -1,6 +1,10 @@
 function Button(props) {
-  const { textContent } = props;
-  return <button className="btn">{textContent}</button>;
+  const { textContent, onClick } = props;
+  return (
+    <button className="btn" onClick={onClick}>
+      {textContent}
+    </button>
+  );
 }
 
 export default Button;

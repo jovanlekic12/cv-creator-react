@@ -7,7 +7,10 @@ function PersonalInfo() {
       <Input placeholder="First Name" />
       <Input placeholder="Last Name" />
       <Input placeholder="Title" />
-      <input type="file" placeholder="" />
+      <label className="photo__label">
+        Photo +
+        <input type="file" className="input__file" />
+      </label>
       <Input placeholder="Adress" />
       <Input placeholder="Phone number" />
       <Input placeholder="Email" />

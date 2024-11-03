@@ -42,12 +42,28 @@ article {
   font-size: 3.5rem;
 }
 
+.input__file {
+  display: none;
+}
+
+.photo__label {
+  font-size: 2.5rem;
+  padding: 1rem 1rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  color: #777;
+}
+
 .input {
   font-size: 2.5rem;
   padding: 1rem 1rem;
   border-radius: 1rem;
   border: 1px solid #bcbcbc;
   transition: border 0.3;
+}
+
+.input::placeholder {
+  color: #777;
 }
 
 .input:focus {

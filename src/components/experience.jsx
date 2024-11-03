@@ -1,6 +1,6 @@
 import Input from "./input";
-
-function Experience() {
+import Button from "./button";
+function Experience({ handleDeleteExperience, id }) {
   return (
     <article className="experience__container">
       <Input placeholder="Position" />
@@ -8,7 +8,7 @@ function Experience() {
       <Input placeholder="City" />
       <Input placeholder="From (dd/mm/yy)" />
       <Input placeholder="To (dd/mm/yy)" />
-      <Button textContent="Delete" />
+      <Button textContent="Delete" onClick={() => handleDeleteExperience(id)} />
     </article>
   );
 }

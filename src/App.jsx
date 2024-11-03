@@ -54,6 +54,7 @@ function App() {
 
   const [experiences, setExperiences] = useState([
     {
+      id: self.crypto.randomUUID(),
       position: position,
       company: company,
       companyCity: companyCity,
@@ -62,6 +63,14 @@ function App() {
     },
   ]);
 
+  function handleDeleteEducation(id) {
+    setEducations((prev) => prev.filter((education) => education.id !== id));
+  }
+
+  function handleDeleteExperience(id) {
+    setExperiences((prev) => prev.filter((experience) => experience.id !== id));
+  }
+
   return (
     <>
       <header className="header">
@@ -69,28 +78,40 @@ function App() {
       </header>
       <main className="main__container">
         <PersonalInfo />
-        {educations && (
-          <section className="educations__container">
+        <section className="educations__container">
+          <h1 className="title">Education</h1>
+          {educations && (
             <div className="educations__div">
-              <h1 className="title">Education</h1>
               {educations.map((education) => {
-                return <Education key={education.id} />;
+                return (
+                  <Education
+                    id={education.id}
+                    key={education.id}
+                    handleDeleteEducation={handleDeleteEducation}
+                  />
+                );
               })}
             </div>
-            <Button textContent="Add education" />
-          </section>
-        )}
-        {experiences && (
-          <section className="experiences__container">
+          )}
+          <Button textContent="Add education" />
+        </section>
+        <section className="experiences__container">
+          <h1 className="title">Experience</h1>
+          {experiences && (
             <div className="experiences__div">
-              <h1 className="title">Experience</h1>
-              {experiences.map((education) => {
-                return <Education key={education.id} />;
+              {experiences.map((experience) => {
+                return (
+                  <Experience
+                    key={experience.id}
+                    id={experience.id}
+                    handleDeleteExperience={handleDeleteExperience}
+                  />
+                );
               })}
             </div>
-            <Button textContent="Add experience" />
-          </section>
-        )}
+          )}
+          <Button textContent="Add experience" />
+        </section>
         <div className="cv__btn__container">
           <button className="preview__btn cv__btn">Preview</button>
           <button className="reset__btn cv__btn">Reset</button>

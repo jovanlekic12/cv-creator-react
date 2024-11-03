@@ -1,7 +1,8 @@
 import { useState } from "react";
 import "./App.css";
 import PersonalInfo from "./components/personalInfo";
-
+import Education from "./components/education";
+import Button from "./components/button";
 function App() {
   //personal infos
   const [firstName, setFirstName] = useState("");
@@ -66,6 +67,16 @@ function App() {
       </header>
       <main className="main__container">
         <PersonalInfo />
+        {educations &&
+          educations.map((education) => {
+            return <Education key={education.universityName} />;
+          })}
+        {educations && (
+          <div className="btn__container">
+            <Button textContent="Delete" />
+            <Button textContent="Add education" />
+          </div>
+        )}
       </main>
     </>
   );

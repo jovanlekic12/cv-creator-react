@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import PersonalInfo from "./components/personalInfo";
 import Education from "./components/education";
+import Experience from "./components/experience";
 import Button from "./components/button";
 function App() {
   //personal infos
@@ -30,15 +31,6 @@ function App() {
   const [companyToDate, setCompanyToDate] = useState("");
 
   const [educations, setEducations] = useState([
-    {
-      id: self.crypto.randomUUID(),
-      universityName: universityName,
-      universityCity: universityCity,
-      degree: degree,
-      subject: subject,
-      universityFromDate: universityFromDate,
-      universtityToDate: universtityToDate,
-    },
     {
       id: self.crypto.randomUUID(),
       universityName: universityName,
@@ -77,16 +69,32 @@ function App() {
       </header>
       <main className="main__container">
         <PersonalInfo />
-        <section className="educations__container">
-          <div className="educations__div">
-            <h1 className="title">Educations</h1>
-            {educations &&
-              educations.map((education) => {
+        {educations && (
+          <section className="educations__container">
+            <div className="educations__div">
+              <h1 className="title">Education</h1>
+              {educations.map((education) => {
                 return <Education key={education.id} />;
               })}
-          </div>
-          <Button textContent="Add education" />
-        </section>
+            </div>
+            <Button textContent="Add education" />
+          </section>
+        )}
+        {experiences && (
+          <section className="experiences__container">
+            <div className="experiences__div">
+              <h1 className="title">Experience</h1>
+              {experiences.map((education) => {
+                return <Education key={education.id} />;
+              })}
+            </div>
+            <Button textContent="Add experience" />
+          </section>
+        )}
+        <div className="cv__btn__container">
+          <button className="preview__btn cv__btn">Preview</button>
+          <button className="reset__btn cv__btn">Reset</button>
+        </div>
       </main>
     </>
   );

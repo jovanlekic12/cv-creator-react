@@ -68,6 +68,18 @@ article {
   gap: 2rem;
 }
 
+.experiences__container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.experiences__div {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
 .btn__container {
   display: flex;
   flex-direction: column;
@@ -83,10 +95,47 @@ article {
   padding: 1.5rem 0;
   border-radius: 1rem;
   transition: background-color 0.3s;
+  border: 0;
 }
 
 .btn:hover {
   cursor: pointer;
   background-color: #000;
+  transition: background-color 0.3s;
+}
+
+.cv__btn__container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.cv__btn {
+  font-size: 2.5rem;
+  color: #fff;
+  font-family: sans-serif;
+  font-weight: 600;
+  padding: 1.5rem 0;
+  border-radius: 1rem;
+  transition: background-color 0.3s;
+  border: 0;
+  cursor: pointer;
+}
+
+.preview__btn {
+  background-color: #16bf07;
+}
+
+.preview__btn:hover {
+  background-color: #108805;
+  transition: background-color 0.3s;
+}
+
+.reset__btn {
+  background-color: #e51111;
+}
+
+.reset__btn:hover {
+  background-color: #a10707;
   transition: background-color 0.3s;
 }

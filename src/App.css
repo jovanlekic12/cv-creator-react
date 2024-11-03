@@ -38,7 +38,7 @@ article {
   gap: 1.5rem;
 }
 
-article h1 {
+.title {
   font-size: 3.5rem;
 }
 
@@ -56,6 +56,18 @@ article h1 {
   transition: all 0.3s ease;
 }
 
+.educations__container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.educations__div {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
 .btn__container {
   display: flex;
   flex-direction: column;
@@ -70,4 +82,11 @@ article h1 {
   font-weight: 600;
   padding: 1.5rem 0;
   border-radius: 1rem;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: #000;
+  transition: background-color 0.3s;
 }

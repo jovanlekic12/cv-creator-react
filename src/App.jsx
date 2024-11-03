@@ -31,6 +31,16 @@ function App() {
 
   const [educations, setEducations] = useState([
     {
+      id: self.crypto.randomUUID(),
+      universityName: universityName,
+      universityCity: universityCity,
+      degree: degree,
+      subject: subject,
+      universityFromDate: universityFromDate,
+      universtityToDate: universtityToDate,
+    },
+    {
+      id: self.crypto.randomUUID(),
       universityName: universityName,
       universityCity: universityCity,
       degree: degree,
@@ -67,16 +77,16 @@ function App() {
       </header>
       <main className="main__container">
         <PersonalInfo />
-        {educations &&
-          educations.map((education) => {
-            return <Education key={education.universityName} />;
-          })}
-        {educations && (
-          <div className="btn__container">
-            <Button textContent="Delete" />
-            <Button textContent="Add education" />
+        <section className="educations__container">
+          <div className="educations__div">
+            <h1 className="title">Educations</h1>
+            {educations &&
+              educations.map((education) => {
+                return <Education key={education.id} />;
+              })}
           </div>
-        )}
+          <Button textContent="Add education" />
+        </section>
       </main>
     </>
   );

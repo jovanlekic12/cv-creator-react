@@ -3,7 +3,7 @@ import Input from "./input";
 function PersonalInfo() {
   return (
     <article className="infos__container">
-      <h1>Personal information</h1>
+      <h1 className="title">Personal information</h1>
       <Input placeholder="First Name" />
       <Input placeholder="Last Name" />
       <Input placeholder="Title" />

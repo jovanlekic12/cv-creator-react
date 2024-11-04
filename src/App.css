@@ -1,5 +1,5 @@
 html {
-  font-size: 62.5%;
+  font-size: 52.5%;
 }
 
 * {
@@ -67,7 +67,7 @@ article {
 }
 
 .input:focus {
-  border: 5px solid aqua;
+  border: 3px solid aqua;
   outline: 0;
   transition: all 0.3s ease;
 }

@@ -1,12 +1,20 @@
+import OverlayEducation from "./overlayEducation";
+import OverlayExperience from "./overlayExperience";
+import ReactDOM from "react-dom";
 function Overlay(props) {
-  const { personalInfo, experiences } = props;
+  const { personalInfo, experiences, educations } = props;
 
-  return (
+  return ReactDOM.createPortal(
     <div className="overlay">
-      <header className="overlay__header">{personalInfo.title}</header>
+      <header className="overlay__header">
+        <h1>
+          {personalInfo.firstName} {personalInfo.lastName}
+        </h1>
+        <h2>{personalInfo.title}</h2>
+      </header>
       <div className="overlay__container">
         <aside className="personal__container">
-          <img src="" alt="" />
+          <img src={personalInfo.photo} alt="./assets/images/profile-alt.jpg" />
           <h1>Personal Details</h1>
           <h2>Adress: {personalInfo.adress}</h2>
           <h2>Phone number: {personalInfo.phone}</h2>
@@ -18,11 +26,25 @@ function Overlay(props) {
             <p>{personalInfo.description}</p>
           </div>
           <div className="education__container">
-            <h1></h1>
+            <h1>Education</h1>
+            {educations &&
+              educations.map((education) => {
+                return <OverlayEducation key={education.id} {...education} />;
+              })}
+          </div>
+          <div className="experience__container">
+            <h1>Experience</h1>
+            {experiences &&
+              experiences.map((experience) => {
+                return (
+                  <OverlayExperience key={experience.id} {...experience} />
+                );
+              })}
           </div>
         </main>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
 

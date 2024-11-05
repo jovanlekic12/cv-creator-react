@@ -17,8 +17,10 @@ function EducationForm({ handleDeleteEducation, id, handleUpdateEducation }) {
       <Input
         placeholder="City"
         name="universityCity"
+        data-type="educations"
         onChange={(event) =>
-          handleUpdateExperience(
+          handleUpdateEducation(
+            event.target.getAttribute("data-type"),
             id,
             event.target.getAttribute("name"),
             event.target.value
@@ -29,7 +31,7 @@ function EducationForm({ handleDeleteEducation, id, handleUpdateEducation }) {
         placeholder="Degree"
         name="degree"
         onChange={(event) =>
-          handleUpdateExperience(
+          handleUpdateEducation(
             id,
             event.target.getAttribute("name"),
             event.target.value
@@ -40,7 +42,7 @@ function EducationForm({ handleDeleteEducation, id, handleUpdateEducation }) {
         placeholder="Subject"
         name="subject"
         onChange={(event) =>
-          handleUpdateExperience(
+          handleUpdateEducation(
             id,
             event.target.getAttribute("name"),
             event.target.value
@@ -51,7 +53,7 @@ function EducationForm({ handleDeleteEducation, id, handleUpdateEducation }) {
         placeholder="From (dd/mm/yy)"
         name="universityFromDate"
         onChange={(event) =>
-          handleUpdateExperience(
+          handleUpdateEducation(
             id,
             event.target.getAttribute("name"),
             event.target.value
@@ -62,7 +64,7 @@ function EducationForm({ handleDeleteEducation, id, handleUpdateEducation }) {
         placeholder="To (dd/mm/yy)"
         name="universityToDate"
         onChange={(event) =>
-          handleUpdateExperience(
+          handleUpdateEducation(
             id,
             event.target.getAttribute("name"),
             event.target.value

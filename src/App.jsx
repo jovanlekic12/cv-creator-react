@@ -15,7 +15,7 @@ function App() {
       degree: "",
       subject: "",
       universityFromDate: "",
-      universtityToDate: "",
+      universityToDate: "",
     },
   ]);
 
@@ -42,24 +42,27 @@ function App() {
   ]);
 
   function handleUpdateEducation(id, name, field) {
-    const currentEducation = educations.find(
-      (education) => education.id === id
-    );
-    currentEducation[name] = field;
+    const newItems = educations.map((item) => {
+      if (id === item.id) {
+        return { ...item, [name]: field };
+      } else return { item };
+    });
+    setEducations(newItems);
   }
 
   function handleUpdateExperience(id, name, field) {
-    const currentExperince = experiences.find(
-      (experience) => experience.id === id
-    );
-    currentExperince[name] = field;
-    console.log(experiences);
+    const newItems = experiences.map((item) => {
+      if (id === item.id) {
+        return { ...item, [name]: field };
+      } else return { item };
+    });
+    setExperiences(newItems);
   }
 
   function handleUpdateInfo(name, field) {
-    const newInfos = { ...personalInfo, [name]: field };
-    setPersonalInfo(newInfos);
-    console.log(personalInfo);
+    setPersonalInfo((prev) => {
+      return { ...prev, [name]: field };
+    });
   }
 
   function handleDeleteEducation(id) {
@@ -73,12 +76,12 @@ function App() {
   function handleAddEducation() {
     const newEducation = {
       id: self.crypto.randomUUID(),
-      universityName: universityName,
-      universityCity: universityCity,
-      degree: degree,
-      subject: subject,
-      universityFromDate: universityFromDate,
-      universtityToDate: universtityToDate,
+      universityName: "",
+      universityCity: "",
+      degree: "",
+      subject: "",
+      universityFromDate: "",
+      universityToDate: "",
     };
     setEducations((prev) => [...prev, newEducation]);
   }
@@ -86,11 +89,11 @@ function App() {
   function handleAddExperince() {
     const newExperience = {
       id: self.crypto.randomUUID(),
-      position: position,
-      company: company,
-      companyCity: companyCity,
-      companyFromDate: companyFromDate,
-      companyToDate: companyToDate,
+      position: "",
+      company: "",
+      companyCity: "",
+      companyFromDate: "",
+      companyToDate: "",
     };
     setExperiences((prev) => [...prev, newExperience]);
   }
@@ -142,7 +145,11 @@ function App() {
           <button className="preview__btn cv__btn">Preview</button>
           <button className="reset__btn cv__btn">Reset</button>
         </div>
-        <Overlay personalInfo={personalInfo} />
+        <Overlay
+          personalInfo={personalInfo}
+          experiences={experiences}
+          educations={educations}
+        />
       </main>
     </>
   );

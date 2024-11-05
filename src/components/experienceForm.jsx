@@ -30,7 +30,7 @@ function ExperienceForm({
         }
       />
       <Input
-        name="comapnyCity"
+        name="companyCity"
         placeholder="City"
         onChange={(event) =>
           handleUpdateExperience(

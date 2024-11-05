@@ -1,44 +1,21 @@
 import { useState } from "react";
 import "./App.css";
 import PersonalInfo from "./components/personalInfo";
-import Education from "./components/education";
-import Experience from "./components/experience";
+import EducationForm from "./components/educationForm";
+import ExperienceForm from "./components/experienceForm";
 import Button from "./components/button";
+import Overlay from "./components/overlay";
+
 function App() {
-  //personal infos
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [title, setTitle] = useState("");
-  // const [photo, setPhoto] = useState("");
-  const [adress, setAdress] = useState("");
-  const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
-  const [description, setDescription] = useState("");
-
-  //education
-  const [universityName, setUniversityName] = useState("");
-  const [universityCity, setUniversityCity] = useState("");
-  const [degree, setDegree] = useState("");
-  const [subject, setSubject] = useState("");
-  const [universityFromDate, setUniversityFromDate] = useState("");
-  const [universtityToDate, setUniverstityToDate] = useState("");
-
-  //experience
-  const [position, setPosition] = useState("");
-  const [company, setCompany] = useState("");
-  const [companyCity, setCompanyCity] = useState("");
-  const [companyFromDate, setCompanyFromDate] = useState("");
-  const [companyToDate, setCompanyToDate] = useState("");
-
   const [educations, setEducations] = useState([
     {
       id: self.crypto.randomUUID(),
-      universityName: universityName,
-      universityCity: universityCity,
-      degree: degree,
-      subject: subject,
-      universityFromDate: universityFromDate,
-      universtityToDate: universtityToDate,
+      universityName: "",
+      universityCity: "",
+      degree: "",
+      subject: "",
+      universityFromDate: "",
+      universtityToDate: "",
     },
   ]);
 
@@ -46,6 +23,7 @@ function App() {
     firstName: "",
     lastName: "",
     title: "",
+    photo: "",
     adress: "",
     phone: "",
     email: "",
@@ -55,13 +33,28 @@ function App() {
   const [experiences, setExperiences] = useState([
     {
       id: self.crypto.randomUUID(),
-      position: position,
-      company: company,
-      companyCity: companyCity,
-      companyFromDate: companyFromDate,
-      companyToDate: companyToDate,
+      position: "",
+      company: "",
+      companyCity: "",
+      companyFromDate: "",
+      companyToDate: "",
     },
   ]);
+
+  function handleUpdateEducation(id, name, field) {
+    const currentEducation = educations.find(
+      (education) => education.id === id
+    );
+    currentEducation[name] = field;
+  }
+
+  function handleUpdateExperience(id, name, field) {
+    const currentExperince = experiences.find(
+      (experience) => experience.id === id
+    );
+    currentExperince[name] = field;
+    console.log(experiences);
+  }
 
   function handleUpdateInfo(name, field) {
     const newInfos = { ...personalInfo, [name]: field };
@@ -115,9 +108,10 @@ function App() {
             <div className="educations__div">
               {educations.map((education) => {
                 return (
-                  <Education
+                  <EducationForm
                     id={education.id}
                     key={education.id}
+                    handleUpdateEducation={handleUpdateEducation}
                     handleDeleteEducation={handleDeleteEducation}
                   />
                 );
@@ -132,10 +126,11 @@ function App() {
             <div className="experiences__div">
               {experiences.map((experience) => {
                 return (
-                  <Experience
+                  <ExperienceForm
                     key={experience.id}
                     id={experience.id}
                     handleDeleteExperience={handleDeleteExperience}
+                    handleUpdateExperience={handleUpdateExperience}
                   />
                 );
               })}
@@ -147,6 +142,7 @@ function App() {
           <button className="preview__btn cv__btn">Preview</button>
           <button className="reset__btn cv__btn">Reset</button>
         </div>
+        <Overlay personalInfo={personalInfo} />
       </main>
     </>
   );

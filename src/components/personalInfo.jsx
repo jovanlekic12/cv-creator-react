@@ -36,7 +36,17 @@ function PersonalInfo({ handleUpdateInfo }) {
       />
       <label className="photo__label">
         Photo +
-        <input type="file" className="input__file" />
+        <input
+          type="file"
+          name="photo"
+          className="input__file"
+          onChange={(event) =>
+            handleUpdateInfo(
+              event.target.getAttribute("name"),
+              event.target.value
+            )
+          }
+        />
       </label>
       <Input
         name="adress"

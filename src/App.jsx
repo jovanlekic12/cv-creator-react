@@ -5,8 +5,17 @@ import EducationForm from "./components/educationForm";
 import ExperienceForm from "./components/experienceForm";
 import Button from "./components/button";
 import Overlay from "./components/overlay";
+import Print from "./components/print";
+import { useReactToPrint } from "react-to-print";
+import { useRef } from "react";
 
 function App() {
+  const [isOverlayOpened, setIsOverlayOpened] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const contentRef = useRef(null);
+  const reactToPrintFn = useReactToPrint({ contentRef });
+
   const [educations, setEducations] = useState([
     {
       id: self.crypto.randomUUID(),
@@ -23,7 +32,6 @@ function App() {
     firstName: "",
     lastName: "",
     title: "",
-    photo: "",
     adress: "",
     phone: "",
     email: "",
@@ -41,21 +49,23 @@ function App() {
     },
   ]);
 
+  function handleUpdateField(id, item, name, field) {
+    if (id === item.id) {
+      return { ...item, [name]: field };
+    } else return { item };
+  }
+
   function handleUpdateEducation(id, name, field) {
-    const newItems = educations.map((item) => {
-      if (id === item.id) {
-        return { ...item, [name]: field };
-      } else return { item };
-    });
+    const newItems = educations.map((item) =>
+      handleUpdateField(id, item, name, field)
+    );
     setEducations(newItems);
   }
 
   function handleUpdateExperience(id, name, field) {
-    const newItems = experiences.map((item) => {
-      if (id === item.id) {
-        return { ...item, [name]: field };
-      } else return { item };
-    });
+    const newItems = educations.map((item) =>
+      handleUpdateField(id, item, name, field)
+    );
     setExperiences(newItems);
   }
 
@@ -103,8 +113,13 @@ function App() {
       <header className="header">
         <h1>CV CREATOR</h1>
       </header>
-      <main className="main__container">
-        <PersonalInfo handleUpdateInfo={handleUpdateInfo} />
+      <main
+        className={isOverlayOpened ? "main__container hide" : "main__container"}
+      >
+        <PersonalInfo
+          handleUpdateInfo={handleUpdateInfo}
+          setSelectedImage={setSelectedImage}
+        />
         <section className="educations__container">
           <h1 className="title">Education</h1>
           {educations && (
@@ -142,13 +157,26 @@ function App() {
           <Button textContent="Add experience" onClick={handleAddExperince} />
         </section>
         <div className="cv__btn__container">
-          <button className="preview__btn cv__btn">Preview</button>
+          <button
+            className="preview__btn cv__btn"
+            onClick={() => setIsOverlayOpened(true)}
+          >
+            Preview
+          </button>
           <button className="reset__btn cv__btn">Reset</button>
         </div>
         <Overlay
           personalInfo={personalInfo}
           experiences={experiences}
           educations={educations}
+          selectedImage={selectedImage}
+          className={isOverlayOpened ? "overlay" : "overlay hide"}
+          contentRef={contentRef}
+        />
+        <Print
+          className={isOverlayOpened ? "print__section" : "print__section hide"}
+          setIsOverlayOpened={setIsOverlayOpened}
+          reactToPrintFn={reactToPrintFn}
         />
       </main>
     </>

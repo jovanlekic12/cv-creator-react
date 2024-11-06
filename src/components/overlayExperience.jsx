@@ -4,11 +4,11 @@ function OverlayExperience(props) {
 
   return (
     <div className="experience__div">
-      <h1>
+      <h2>
         {companyFromDate} - {companyToDate}
-      </h1>
+      </h2>
       <div className="experience__div__infos">
-        <h1>{position}</h1>
+        <h2>{position}</h2>
         <p>
           {company}, {companyCity}
         </p>

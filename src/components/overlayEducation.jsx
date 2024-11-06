@@ -10,11 +10,11 @@ function OverlayEducation(props) {
 
   return (
     <div className="education__div">
-      <h1>
+      <h2>
         {universityFromDate} - {universityToDate}
-      </h1>
+      </h2>
       <div className="education__div__infos">
-        <h1>{degree}</h1>
+        <h2>{degree}</h2>
         <p>{subject}</p>
         <p>
           {universityName}, {universityCity}

@@ -1,6 +1,6 @@
 import Input from "./input";
 
-function PersonalInfo({ handleUpdateInfo }) {
+function PersonalInfo({ handleUpdateInfo, setSelectedImage }) {
   return (
     <article className="infos__container">
       <h1 className="title">Personal information</h1>
@@ -41,10 +41,7 @@ function PersonalInfo({ handleUpdateInfo }) {
           name="photo"
           className="input__file"
           onChange={(event) =>
-            handleUpdateInfo(
-              event.target.getAttribute("name"),
-              event.target.value
-            )
+            setSelectedImage(URL.createObjectURL(event.target.files[0]))
           }
         />
       </label>
@@ -59,7 +56,7 @@ function PersonalInfo({ handleUpdateInfo }) {
         }
       />
       <Input
-        name="phoneNumber"
+        name="phone"
         placeholder="Phone number"
         onChange={(event) =>
           handleUpdateInfo(

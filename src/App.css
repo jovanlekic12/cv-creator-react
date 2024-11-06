@@ -164,25 +164,117 @@ article {
   flex-direction: column;
   left: 50%;
   position: absolute;
-  top: 10rem;
+  top: 25rem;
   transform: translate(-50%, 0);
   z-index: 30;
   font-size: 3rem;
   width: 130rem;
-  min-height: 120rem;
+  min-height: 170rem;
 }
 
 .overlay__container {
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: flex-start;
-  width: 90%;
+  display: grid;
+  grid-template-columns: 85rem 36rem;
+  min-height: 105rem;
+  padding: 0 2rem;
+  width: 98.5%;
   justify-content: space-between;
-  padding: 5rem 0;
 }
 
 .overlay__header {
-  background-color: #16bf07;
+  background-color: #289d1e;
   min-height: 10rem;
   width: 100%;
+  color: #fff;
+}
+
+.overlay__main {
+  font-size: 2rem;
+  padding-top: 5rem;
+}
+
+.overlay__main div {
+  min-height: 20rem;
+}
+
+.overlay__main div h1 {
+  color: #108805;
+  border-bottom: 1px #c4c4c4 solid;
+  margin-bottom: 2rem;
+}
+
+.personal__container {
+  font-size: 2rem;
+  color: #2d2d2d;
+}
+
+.personal__container h1 {
+  border-bottom: 1px #c4c4c4 solid;
+  margin-bottom: 2rem;
+  color: #108805;
+}
+
+.personal__container h2 {
+  margin-bottom: 0.5rem;
+  margin-top: 2rem;
+  font-size: 3rem;
+}
+
+.personal__container p {
+  color: #7f7f7f;
+}
+
+.hide {
+  visibility: hidden;
+  display: none;
+}
+
+.experience__div,
+.education__div {
+  display: flex;
+  gap: 50rem;
+  color: #2d2d2d;
+}
+
+.overlay__photo {
+  width: 100%;
+  object-fit: cover;
+}
+
+.print__section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+  margin: 3.5rem 0;
+}
+
+.print__section button {
+  font-size: 5rem;
+  padding: 2rem 5rem;
+  border-radius: 2rem;
+  border: 0;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: background-color 0.3s;
+  cursor: pointer;
+  color: white;
+}
+
+.print__btn {
+  background-color: #108805;
+}
+
+.back__btn {
+  background-color: #e51111;
+}
+
+.back__btn:hover {
+  background-color: #b70f0f;
+}
+
+.print__btn:hover {
+  background-color: #0e7005;
+  transition: background-color 0.3s;
 }

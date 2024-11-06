@@ -1,5 +1,5 @@
 function Button(props) {
-  const { textContent, onClick } = props;
+  const { onClick, textContent } = props;
   return (
     <button className="btn" onClick={onClick}>
       {textContent}

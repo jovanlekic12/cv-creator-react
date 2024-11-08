@@ -67,6 +67,7 @@ function App() {
       handleUpdateField(id, item, name, field)
     );
     setExperiences(newItems);
+    console.log(experiences);
   }
 
   function handleUpdateInfo(name, field) {
